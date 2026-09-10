@@ -1,0 +1,98 @@
+FRAGOR NOCTIS — DIE TEXTE
+=========================
+Alle gesprochenen Texte des Stuecks "Fragor Noctis" (Release R06),
+mit Uebersetzung und Quelle. Thema: der Zusammenbruch der
+Demokratie -- erzaehlt als Schicksal einer Melodie.
+
+1. IN PRINCIPIO (vocal_in_principio.wav)
+   Prolog -- 15 Takte VOR Takt 0, ueber blossem D-Bordun,
+   verlangsamt abgespielt (rate 0.8).
+---------------------------------------------------------------
+
+  In principio erat res publica, erat libertas.
+  Sed quo liberiores fiebamus,
+  eo suspicaciores, eo magis invidi facti sumus --
+  et sibi quisque proximus.
+
+  (Im Anfang war die Republik, war die Freiheit.
+  Doch je freier wir wurden, desto argwoehnischer,
+  desto neidischer wurden wir --
+  und jeder sich selbst der Naechste.)
+
+Originaltext von Johann van Staal. "In principio erat" zitiert
+bewusst Johannes 1,1 (Vulgata); "sibi quisque proximus"
+variiert Terenz' sprichwoertliches "proximus sum egomet mihi"
+(Andria 636).
+
+
+2. RES POPULI (vocal_res_populi.wav) -- Takt 28
+---------------------------------------------------------------
+
+  Est igitur res publica res populi.
+
+  (Das Gemeinwesen ist also die Sache des Volkes.)
+
+Quelle: Cicero, De re publica I,39 (gemeinfrei). Die
+beruehmteste Definition des Staates -- gesprochen ueber der
+ersten vollstaendigen Aussage der Melodie: Die Definition und
+die Melodie sind dasselbe, und beide werden zerstoert.
+
+
+3. O TEMPORA (vocal_o_tempora.wav) -- Takt 40 und, beschaedigt,
+   Takt 49 (dieselbe Aufnahme, im Code verzerrt)
+---------------------------------------------------------------
+
+  O tempora, o mores!
+
+  (Was fuer Zeiten, was fuer Sitten!)
+
+Quelle: Cicero, In Catilinam I,2 (gemeinfrei) -- der Ruf des
+Konsuls, der einen Staatsstreich kommen sieht.
+
+
+4. TYRANNUS (vocal_tyrannus.wav) -- Takt 61; das letzte Wort
+   faellt auf den Einschlag der AUTOCRACY
+---------------------------------------------------------------
+
+  Ex hac maxima libertate tyrannus gignitur.
+
+  (Aus dieser groessten Freiheit wird der Tyrann geboren.)
+
+Quelle: Cicero, De re publica I,68 (gemeinfrei) -- Ciceros
+lateinische Fassung von Platons Analyse, wie Demokratien
+kippen: Der Tyrann waechst nicht gegen die Freiheit,
+sondern aus ihr.
+
+
+5. MEMORIAM (vocal_memoriam.wav) -- Takt 96, Beginn von MEMORY
+---------------------------------------------------------------
+
+  Memoriam quoque ipsam cum voce perdidissemus,
+  si tam in nostra potestate esset oblivisci quam tacere.
+
+  (Wir haetten mit der Stimme auch die Erinnerung selbst
+  verloren, wenn das Vergessen ebenso in unserer Macht
+  stuende wie das Schweigen.)
+
+Quelle: Tacitus, Agricola 2 (gemeinfrei) -- geschrieben nach
+fuenfzehn Jahren Tyrannis unter Domitian. Der Satz erklaert,
+warum die MEMORY-Sektion existiert: Man konnte sie zum
+Schweigen bringen, aber nicht zum Vergessen.
+
+
+6. SED MEMINIMUS (vocal_meminimus.wav) -- Takt 120, ueber dem
+   fallenden Melodie-Skelett
+---------------------------------------------------------------
+
+  Sed meminimus.
+  Et dum meminimus, redire potest.
+
+  (Aber wir erinnern uns.
+  Und solange wir uns erinnern, kann sie wiederkehren.)
+
+Originaltext von Johann van Staal. Das "sie" ist die res
+publica aus Text 2 -- und der Satz ist die helle Umkehrung
+von "Roma semper redit" (Regnum Divisum): Dort kehrt der
+Untergang wieder, hier darf es die Demokratie.
+
+
