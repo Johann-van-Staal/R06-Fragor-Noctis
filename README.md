@@ -9,9 +9,10 @@ Each track is a single, self-contained `.rb` file. It plays the entire
 arrangement from the first spoken word to the final unresolved note and
 stops by itself.
 
-This repository contains **Fragor Noctis** — two takes on how
+This repository contains **Fragor Noctis** — three takes on how
 democracies die: the original tells the collapse as it happens; the
-remix wakes up inside the ruins afterwards.
+Domus Venefica Mix wakes up inside the ruins afterwards; the Ferrum
+et Ordo Mix shows the machine that carried the collapse out.
 
 ## Tracks
 
@@ -64,6 +65,24 @@ remix wakes up inside the ruins afterwards.
   ground to gravel. At the end everything disappears into the VOID
   except a last drone and the unresolved E, farther away than ever.
 
+- **`fragor_noctis_ferrum_et_ordo.rb` — "Fragor Noctis (Ferrum et
+  Ordo Mix)"** — martial industrial, 122 BPM, D minor, ~4:15. *Iron
+  and order.* No witnesses are left in this version, only commands:
+  *Procedite! In ordinem! Obedite!* — barked in Latin over a military
+  snare (ruffs, rolls, a march figure that tightens as the regime
+  consolidates) and a foundry of metal percussion: machine presses,
+  slams, dragged chains, scraped steel. The boots of the original
+  march again, re-pitched to the new tempo. Fragments of the human
+  melody surface three times and are flattened each time; at bar 88
+  the title is proclaimed by three voices at once — a frontal voice,
+  a deep shadow and a bitcrushed machine voice — the moment the
+  regime believes itself eternal. Then EXHAUSTION: the kick begins to
+  fail, and the commands play *backwards* — the machine no longer
+  obeys even itself. The last word belongs, as it must, to *Sed
+  meminimus*, and the piece ends on the same unresolved E as
+  everything else on this label. The martial aesthetic is quoted in
+  order to be broken: the commands decay; memory outlasts them.
+
 ## Requirements
 
 - **Sonic Pi v4 or later** — free, available for macOS, Windows and Linux
@@ -110,8 +129,9 @@ remix wakes up inside the ruins afterwards.
    run_file "/path/to/your/folder/Fragor_Noctis.rb"
    ```
 
-   (Same procedure for `fragor_noctis_domus_venefica_mix.rb`. Note
-   that the remix has no prologue: its counter starts immediately.)
+   (Same procedure for `fragor_noctis_domus_venefica_mix.rb` and
+   `fragor_noctis_ferrum_et_ordo.rb`. Note that the remixes have no
+   prologue: their counters start immediately.)
 
    Press *Stop* to end playback at any time — and always press *Stop*
    before re-running, otherwise loops from the previous run keep going
@@ -127,17 +147,26 @@ vocal_o_tempora.wav          vocal_tyrannus.wav
 vocal_memoriam.wav           vocal_meminimus.wav
 effect_shop_windows.wav      effect_gathering_storm.wav
 effect_marching_boots.wav    effect_craw.wav
-effect_ominous_drone.wav     (remix only)
+effect_ominous_drone.wav     (remixes only)
+
+Ferrum et Ordo Mix only:
+vocal_obedite.wav            vocal_procedite.wav
+vocal_in_ordinem.wav         vocal_ferrum_et_ordo.wav
+effect_metal_slam.wav        effect_machine_press.wav
+effect_chain_drag.wav        effect_metal_scrape.wav
 ```
 
 Voice recordings by Johann van Staal. `effect_marching_boots.wav` was
 synthesized for this release — 32 collective footfalls generated from
 filtered noise, spaced exactly on the 126 BPM grid so the column marches
-in step with the kick. The remaining ambience samples come from free
-sample libraries; see their respective sources for license details.
+in step with the kick (the Ferrum et Ordo Mix re-pitches it to 122 BPM).
+The remaining ambience and foley samples come from free sample
+libraries; see their respective sources for license details.
 
-Both tracks use the same voice recordings — the remix re-pitches them
-instead of re-recording them: a remix of the words, not new words.
+All three tracks share the original's voice recordings — the remixes
+re-pitch them instead of re-recording them. The Ferrum et Ordo Mix
+adds four newly recorded command vocals: each contains exactly the
+words of its filename, nothing more — orders, not sentences.
 
 ## The Latin texts
 
@@ -161,10 +190,9 @@ with translations, sources and their position in the track:
   Domitian (bar 96, opening the MEMORY section).
 - **"Sed meminimus" — an original epilogue by Johann van Staal**
   (bar 120, over the collapse).
-
-The prologue is spoken in ecclesiastical pronunciation, the Roman
-witnesses in classical pronunciation — two sound-worlds of the same
-dead language, as on the previous releases.
+- **The commands of the Ferrum et Ordo Mix** — *Procedite!* (Advance!),
+  *In ordinem!* (Into line!), *Obedite!* (Obey!) and *Ferrum et ordo!*
+  (Iron and order!) — original drill Latin, one imperative per file.
 
 ## How the tracks work
 
@@ -191,11 +219,20 @@ without ever arriving there.
 The sound of breaking glass at the FRACTURE is used deliberately and
 soberly; listeners in Germany will understand what night it recalls.
 
-The remix keeps the clock architecture and the D-minor world but
-replaces narration with aftermath: everything from the original —
-melody, voices, glass, boots, machine — returns slowed, reversed,
-sliced or misremembered. Nothing new happens in the ruins; that is
-the point.
+The Domus Venefica Mix keeps the clock architecture and the D-minor
+world but replaces narration with aftermath: everything from the
+original — melody, voices, glass, boots, machine — returns slowed,
+reversed, sliced or misremembered. Nothing new happens in the ruins;
+that is the point.
+
+The Ferrum et Ordo Mix inverts the perspective instead: it is built
+from the machine's side of the original — boots, industrial
+anti-melody, commands — and takes the martial-industrial genre at its
+word in order to break it. The resolution is structural, not
+decorative: in EXHAUSTION the commands are played backwards (the
+machine no longer obeys itself), and the final voice is not an order
+but *Sed meminimus*. The genre's aesthetic of order is quoted only so
+that its decay can be heard.
 
 ## Troubleshooting
 
