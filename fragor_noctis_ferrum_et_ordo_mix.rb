@@ -683,7 +683,7 @@ live_loop :befehle, sync: :puls do
   when 24
     with_fx :compressor, threshold: 0.25, slope_above: 0.5 do
       with_fx :reverb, room: 0.55, mix: 0.16 do
-        vox "vocal_procedite", rate: 1.0, amp: 1.45
+        vox "vocal_procedite", rate: 0.9, amp: 1.45
       end
     end
   when 40
