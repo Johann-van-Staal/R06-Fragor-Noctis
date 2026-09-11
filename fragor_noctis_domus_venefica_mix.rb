@@ -20,7 +20,7 @@ use_bpm 74
 use_random_seed 23
 
 define :pfad do |name|
-  "/Users/hansradtke/Library/Mobile Documents/com~apple~CloudDocs/SonicPi-Repository/SonicPi-Repository/R06_Fragor_Noctis/" + name + ".wav"
+  "... insert local path here ..." + name + ".wav"
 end
 
 puts "PFAD-TEST: " + pfad("vocal_in_principio").inspect
