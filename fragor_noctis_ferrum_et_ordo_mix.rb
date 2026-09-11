@@ -21,7 +21,7 @@ use_bpm 122
 use_random_seed 31
 
 define :pfad do |name|
-  "... insert local path here ..." + name + ".wav"
+  "... insert local path name here ..." + name + ".wav"
 end
 
 puts "PFAD-TEST: " + pfad("vocal_ferrum_et_ordo").inspect
@@ -672,88 +672,245 @@ live_loop :glass, sync: :puls do
 end
 
 # ============================================================
-# DIE BEFEHLE -- 24 PROCEDITE | 40 IN ORDINEM | 56 OBEDITE |
-# 72 TYRANNUS | 88 FERRUM ET ORDO (dreistimmig geschichtet)
+# DIE BEFEHLE -- die Stimme vervielfacht sich mit der Ordnung:
+# 24 PROCEDITE: Mensch + schwacher Schatten
+# 40 IN ORDINEM: erste echte Doppelung
+# 56 OBEDITE: dreifacher Befehls-Stack
+# 72 TYRANNUS: monumental statt chorisch
+# 88 FERRUM ET ORDO: Mensch + Schatten + Maschine
+# 92 FERRUM ET ORDO: die Maschine uebernimmt die Stimme
+#
+# Zeitversetzte Layer laufen in eigenen Threads, damit die
+# kleinen Delays den Vierer-Takt dieses Loops nicht verschieben.
 # ============================================================
 
 live_loop :befehle, sync: :puls do
   t = takt
   stop if t >= 128
+
   case t
+
   when 24
+    # PROCEDITE -- noch klar menschlich; nur ein tiefer Schatten
     with_fx :compressor, threshold: 0.25, slope_above: 0.5 do
-      with_fx :reverb, room: 0.55, mix: 0.16 do
-        vox "vocal_procedite", rate: 0.9, amp: 1.45
+      with_fx :reverb, room: 0.50, mix: 0.14 do
+        vox "vocal_procedite", rate: 1.00, amp: 1.35, pan: 0
       end
     end
-  when 40
-    with_fx :compressor, threshold: 0.25, slope_above: 0.5 do
-      with_fx :distortion, distort: 0.10, mix: 0.12 do
-        vox "vocal_in_ordinem", rate: 0.96, amp: 1.50
-      end
-    end
-  when 56
-    with_fx :compressor, threshold: 0.25, slope_above: 0.5 do
-      with_fx :distortion, distort: 0.18, mix: 0.20 do
-        vox "vocal_obedite", rate: 0.92, amp: 1.60
-      end
-    end
-  when 72
-    with_fx :compressor, threshold: 0.25, slope_above: 0.5 do
-      with_fx :distortion, distort: 0.22, mix: 0.24 do
-        vox "vocal_tyrannus", rate: 0.88, amp: 1.55
-      end
-    end
-  when 88
-    with_fx :compressor, threshold: 0.22, slope_above: 0.45 do
-      # Hauptstimme -- verstaendlich und frontal
-      with_fx :distortion, distort: 0.18, mix: 0.20 do
-        vox "vocal_ferrum_et_ordo", rate: 0.92, amp: 1.35, pan: 0
-      end
-      # tiefe Schattenstimme
-      with_fx :distortion, distort: 0.38, mix: 0.42 do
-        with_fx :lpf, cutoff: 72 do
-          vox "vocal_ferrum_et_ordo", rate: 0.72, amp: 0.58, pan: -0.18
+
+    in_thread do
+      sleep 0.05
+      with_fx :lpf, cutoff: 72 do
+        with_fx :reverb, room: 0.72, mix: 0.24 do
+          vox "vocal_procedite",
+            rate: 0.82, amp: 0.32, pan: -0.12
         end
       end
-      # Maschinenstimme
-      with_fx :bitcrusher, bits: 7, sample_rate: 10500, mix: 0.38 do
-        vox "vocal_ferrum_et_ordo", rate: 0.86, amp: 0.42, pan: 0.18
+    end
+
+  when 40
+    # IN ORDINEM -- erstmals zwei erkennbare Stimmen
+    with_fx :compressor, threshold: 0.25, slope_above: 0.5 do
+      with_fx :distortion, distort: 0.08, mix: 0.10 do
+        vox "vocal_in_ordinem",
+          rate: 0.97, amp: 1.30, pan: -0.06
       end
     end
+
+    in_thread do
+      sleep 0.07
+      with_fx :lpf, cutoff: 88 do
+        with_fx :distortion, distort: 0.12, mix: 0.14 do
+          vox "vocal_in_ordinem",
+            rate: 0.88, amp: 0.52, pan: 0.16
+        end
+      end
+    end
+
+  when 56
+    # OBEDITE -- Befehl, tiefe Stimme und erste Maschinenstimme
+    with_fx :compressor, threshold: 0.22, slope_above: 0.45 do
+      with_fx :distortion, distort: 0.14, mix: 0.16 do
+        vox "vocal_obedite",
+          rate: 0.94, amp: 1.35, pan: 0
+      end
+    end
+
+    in_thread do
+      sleep 0.045
+      with_fx :lpf, cutoff: 78 do
+        with_fx :distortion, distort: 0.24, mix: 0.26 do
+          vox "vocal_obedite",
+            rate: 0.78, amp: 0.58, pan: -0.20
+        end
+      end
+    end
+
+    in_thread do
+      sleep 0.10
+      with_fx :bitcrusher, bits: 8, sample_rate: 12000, mix: 0.28 do
+        with_fx :distortion, distort: 0.28, mix: 0.28 do
+          vox "vocal_obedite",
+            rate: 0.88, amp: 0.46, pan: 0.20
+        end
+      end
+    end
+
+  when 72
+    # TYRANNUS -- kein weiterer Marschchor, sondern Monument
+    with_fx :compressor, threshold: 0.24, slope_above: 0.5 do
+      with_fx :reverb, room: 0.88, mix: 0.36 do
+        with_fx :distortion, distort: 0.18, mix: 0.18 do
+          vox "vocal_tyrannus",
+            rate: 0.84, amp: 1.35, pan: 0
+        end
+      end
+    end
+
+    in_thread do
+      sleep 0.04
+      with_fx :lpf, cutoff: 60 do
+        with_fx :reverb, room: 0.96, mix: 0.52 do
+          vox "vocal_tyrannus",
+            rate: 0.62, amp: 0.30, pan: 0
+        end
+      end
+    end
+
+  when 88
+    # FERRUM ET ORDO -- Mensch + Schatten + Maschine
+    with_fx :compressor, threshold: 0.20, slope_above: 0.42 do
+      with_fx :distortion, distort: 0.18, mix: 0.20 do
+        vox "vocal_ferrum_et_ordo",
+          rate: 0.92, amp: 1.35, pan: 0
+      end
+    end
+
+    in_thread do
+      sleep 0.04
+      with_fx :lpf, cutoff: 70 do
+        with_fx :distortion, distort: 0.36, mix: 0.38 do
+          vox "vocal_ferrum_et_ordo",
+            rate: 0.72, amp: 0.58, pan: -0.22
+        end
+      end
+    end
+
+    in_thread do
+      sleep 0.09
+      with_fx :bitcrusher, bits: 7, sample_rate: 10500, mix: 0.38 do
+        with_fx :distortion, distort: 0.32, mix: 0.34 do
+          vox "vocal_ferrum_et_ordo",
+            rate: 0.84, amp: 0.48, pan: 0.22
+        end
+      end
+    end
+
   when 92
-    # Reprise: tiefer, mechanischer
-    with_fx :distortion, distort: 0.42, mix: 0.42 do
-      with_fx :bitcrusher, bits: 7, sample_rate: 11000, mix: 0.26 do
-        vox "vocal_ferrum_et_ordo", rate: 0.72, amp: 1.35
+    # Reprise -- jetzt fuehrt die Maschine, der Mensch bleibt Rest
+    with_fx :compressor, threshold: 0.20, slope_above: 0.42 do
+      with_fx :distortion, distort: 0.46, mix: 0.46 do
+        with_fx :bitcrusher, bits: 6, sample_rate: 9000, mix: 0.42 do
+          vox "vocal_ferrum_et_ordo",
+            rate: 0.72, amp: 1.05, pan: 0
+        end
+      end
+    end
+
+    in_thread do
+      sleep 0.06
+      with_fx :hpf, cutoff: 72 do
+        with_fx :reverb, room: 0.72, mix: 0.26 do
+          vox "vocal_ferrum_et_ordo",
+            rate: 0.90, amp: 0.34, pan: -0.18
+        end
+      end
+    end
+
+    in_thread do
+      sleep 0.10
+      with_fx :lpf, cutoff: 62 do
+        with_fx :distortion, distort: 0.52, mix: 0.48 do
+          vox "vocal_ferrum_et_ordo",
+            rate: 0.58, amp: 0.38, pan: 0.18
+        end
       end
     end
   end
+
   sleep 4
 end
 
 # ============================================================
-# GEBROCHENE BEFEHLE -- EXHAUSTION: die Befehle laufen
-# rueckwaerts; die Maschine gehorcht sich selbst nicht mehr.
+# GEBROCHENE BEFEHLE -- EXHAUSTION: Nicht nur rueckwaerts,
+# sondern in auseinanderlaufenden Schichten. Die Sprache selbst
+# zerfaellt, waehrend die Maschine ihre Ordnung verliert.
 # ============================================================
 
 live_loop :gebrochene_befehle, sync: :puls do
   t = takt
   stop if t >= 128
+
   if t == 100
-    with_fx :reverb, room: 0.90, mix: 0.48 do
-      vox "vocal_obedite", rate: -0.62, amp: 0.72
+    # OBEDITE -- der Befehl kippt zuerst rueckwaerts
+    with_fx :reverb, room: 0.90, mix: 0.46 do
+      vox "vocal_obedite",
+        rate: -0.62, amp: 0.62, pan: -0.18
     end
+
+    # Darunter bleibt ein langsamer, beschaedigter Vorwaertsrest
+    in_thread do
+      sleep 0.13
+      with_fx :lpf, cutoff: 58 do
+        with_fx :distortion, distort: 0.30, mix: 0.32 do
+          vox "vocal_obedite",
+            rate: 0.52, amp: 0.34, pan: 0.20
+        end
+      end
+    end
+
+    # Letzter Rueckwaertsschatten, kaum noch als Sprache lesbar
+    in_thread do
+      sleep 0.23
+      with_fx :reverb, room: 1, mix: 0.72 do
+        vox "vocal_obedite",
+          rate: -0.38, amp: 0.20, pan: 0
+      end
+    end
+
   elsif t == 106
-    with_fx :reverb, room: 0.96, mix: 0.60 do
-      vox "vocal_in_ordinem", rate: -0.48, amp: 0.58
+    # IN ORDINEM -- die Ordnung selbst verliert Verstaendlichkeit
+    with_fx :reverb, room: 0.96, mix: 0.58 do
+      vox "vocal_in_ordinem",
+        rate: -0.48, amp: 0.50, pan: 0.18
+    end
+
+    in_thread do
+      sleep 0.16
+      with_fx :bitcrusher, bits: 6, sample_rate: 7500, mix: 0.42 do
+        with_fx :lpf, cutoff: 64 do
+          vox "vocal_in_ordinem",
+            rate: 0.60, amp: 0.30, pan: -0.22
+        end
+      end
+    end
+
+    in_thread do
+      sleep 0.28
+      with_fx :reverb, room: 1, mix: 0.78 do
+        vox "vocal_in_ordinem",
+          rate: -0.31, amp: 0.16, pan: 0
+      end
     end
   end
+
   sleep 4
 end
 
 # ============================================================
 # MEMINIMUS -- das letzte Wort behaelt die Erinnerung.
+# Nach allen gestapelten Befehlen bewusst wieder nur EINE
+# menschliche Stimme.
 # ============================================================
 
 live_loop :memory, sync: :puls do
