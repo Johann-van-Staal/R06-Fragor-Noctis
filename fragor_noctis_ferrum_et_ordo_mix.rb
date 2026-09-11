@@ -111,7 +111,7 @@ end
 live_loop :ominous_drone, sync: :puls do
   t = takt
   stop if t >= 128
-  if t == 0
+  if t == 1
     with_fx :lpf, cutoff: 68 do
       with_fx :reverb, room: 0.94, mix: 0.44 do
         vox "effect_ominous_drone", rate: 0.82, amp: 0.52
