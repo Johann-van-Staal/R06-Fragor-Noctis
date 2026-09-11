@@ -9,10 +9,11 @@ Each track is a single, self-contained `.rb` file. It plays the entire
 arrangement from the first spoken word to the final unresolved note and
 stops by itself.
 
-This repository contains **Fragor Noctis** — one track about how
-democracies die.
+This repository contains **Fragor Noctis** — two takes on how
+democracies die: the original tells the collapse as it happens; the
+remix wakes up inside the ruins afterwards.
 
-## Track
+## Tracks
 
 - **`Fragor_Noctis.rb` — "Fragor Noctis"** ("the crash of the night") —
   Crypt House, 126 BPM, D minor, ~4:30. The piece begins before its own
@@ -45,6 +46,23 @@ democracies die.
   spoken: *Sed meminimus. Et dum meminimus, redire potest.* — But we
   remember. And as long as we remember, it can return. The final E
   hangs in the air like an open door.
+
+- **`fragor_noctis_domus_venefica_mix.rb` — "Fragor Noctis (Domus
+  Venefica Mix)"** — witch house, 74 BPM, D minor, ~7:00. *Domus
+  venefica* is witch house rendered back into the dead language it
+  belongs to. Where the original narrates the collapse, the remix
+  begins as if we had awakened inside its ruins: half-time drums with
+  a huge, distant snare; long, almost motionless sub notes instead of
+  a bassline; the melody not fractured but *misremembered* — slowed
+  to single tones that drift in on echo, in the wrong order, with the
+  wrong endings. All six voices return at ritual speed (the prologue,
+  slowed to 0.58, fills the entire opening RITUAL section), *O tempora*
+  additionally haunts the track played backwards, and the machine no
+  longer marches — it looms, two heavy strokes per bar. Breaking glass
+  and marching boots are no longer events but percussion: tiny slices
+  of the original samples, pitched down, some reversed — the ruins
+  ground to gravel. At the end everything disappears into the VOID
+  except a last drone and the unresolved E, farther away than ever.
 
 ## Requirements
 
@@ -92,6 +110,9 @@ democracies die.
    run_file "/path/to/your/folder/Fragor_Noctis.rb"
    ```
 
+   (Same procedure for `fragor_noctis_domus_venefica_mix.rb`. Note
+   that the remix has no prologue: its counter starts immediately.)
+
    Press *Stop* to end playback at any time — and always press *Stop*
    before re-running, otherwise loops from the previous run keep going
    and you hear doubled material. Note that the piece starts with a
@@ -106,6 +127,7 @@ vocal_o_tempora.wav          vocal_tyrannus.wav
 vocal_memoriam.wav           vocal_meminimus.wav
 effect_shop_windows.wav      effect_gathering_storm.wav
 effect_marching_boots.wav    effect_craw.wav
+effect_ominous_drone.wav     (remix only)
 ```
 
 Voice recordings by Johann van Staal. `effect_marching_boots.wav` was
@@ -113,6 +135,9 @@ synthesized for this release — 32 collective footfalls generated from
 filtered noise, spaced exactly on the 126 BPM grid so the column marches
 in step with the kick. The remaining ambience samples come from free
 sample libraries; see their respective sources for license details.
+
+Both tracks use the same voice recordings — the remix re-pitches them
+instead of re-recording them: a remix of the words, not new words.
 
 ## The Latin texts
 
@@ -141,7 +166,7 @@ The prologue is spoken in ecclesiastical pronunciation, the Roman
 witnesses in classical pronunciation — two sound-worlds of the same
 dead language, as on the previous releases.
 
-## How the track works
+## How the tracks work
 
 The architecture is the one shared by all releases: a master clock
 (`live_loop :puls`) counts bars into a shared counter, and every other
@@ -165,6 +190,12 @@ without ever arriving there.
 
 The sound of breaking glass at the FRACTURE is used deliberately and
 soberly; listeners in Germany will understand what night it recalls.
+
+The remix keeps the clock architecture and the D-minor world but
+replaces narration with aftermath: everything from the original —
+melody, voices, glass, boots, machine — returns slowed, reversed,
+sliced or misremembered. Nothing new happens in the ruins; that is
+the point.
 
 ## Troubleshooting
 
