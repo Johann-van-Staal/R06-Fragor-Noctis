@@ -12,8 +12,6 @@
 # und zerrt sich in EXHAUSTION selbst auseinander; die
 # Befehle laufen rueckwaerts, und das letzte Wort behaelt
 # "meminimus". Kein D, keine Aufloesung.
-# Run:  run_file ".../R06_Fragor_Noctis/fragor_noctis_ferrum_et_ordo.rb"
-# (Stop vor Run!)
 # ============================================================
 
 set_volume! 1
@@ -23,7 +21,7 @@ use_bpm 122
 use_random_seed 31
 
 define :pfad do |name|
-  "/Users/hansradtke/Library/Mobile Documents/com~apple~CloudDocs/SonicPi-Repository/SonicPi-Repository/R06_Fragor_Noctis/" + name + ".wav"
+  "... insert local path here ..." + name + ".wav"
 end
 
 puts "PFAD-TEST: " + pfad("vocal_ferrum_et_ordo").inspect
